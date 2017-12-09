@@ -1,6 +1,6 @@
 # Installation {#installation}
 
-When we refer to "Python 3" in this book, we will be referring to any version of Python equal to or greater than version [Python {{ book.pythonVersion }}](https://www.python.org/downloads/).
+When we refer to "Python 3" in this book, we will be referring to any version of Python equal to or greater than version [Python 3.6.0](https://www.python.org/downloads/).
 
 ## Installation on Windows
 

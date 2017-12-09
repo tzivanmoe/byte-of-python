@@ -12,7 +12,7 @@ If you do have previous programming experience, you will be interested in the di
 
 ## Official Website
 
-The official website of the book is {{ book.officialUrl }} where you can read the whole book online, download the latest versions of the book, [buy a printed hard copy]({{ book.buyBookUrl }}) and also send me feedback.
+The official website of the book is [https://python.swaroopch.com/](https://python.swaroopch.com/) where you can read the whole book online, download the latest versions of the book, [buy a printed hard copy](https://www.swaroopch.com/buybook/) and also send me feedback.
 
 ## Something To Think About
 

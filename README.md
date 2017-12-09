@@ -257,26 +257,26 @@ This means:
 Please note:
 
 - Please do *not* sell electronic or printed copies of the book unless you have clearly and prominently mentioned in the description that these copies are *not* from the original author of this book.
-- Attribution *must* be shown in the introductory description and front page of the document by linking back to {{ book.officialUrl }} and clearly indicating that the original text can be fetched from this location.
+- Attribution *must* be shown in the introductory description and front page of the document by linking back to [https://python.swaroopch.com/](https://python.swaroopch.com/) and clearly indicating that the original text can be fetched from this location.
 - All the code/scripts provided in this book is licensed under the [3-clause BSD License](http://www.opensource.org/licenses/bsd-license.php) unless otherwise noted.
 
 ## Read Now
 
-You can read it online at {{ book.officialUrl }}
+You can read it online at [https://python.swaroopch.com/](https://python.swaroopch.com/)
 
 ## Buy The Book
 
-A printed hardcopy of the book can be purchased at {{ book.buyBookUrl }} for your offline reading pleasure, and to support the continued development and improvement of this book.
+A printed hardcopy of the book can be purchased at [https://www.swaroopch.com/buybook/](https://www.swaroopch.com/buybook/) for your offline reading pleasure, and to support the continued development and improvement of this book.
 
 ## Download
 
-Visit {{ book.downloadUrl }} for the following types of downloads:
+Visit [https://www.gitbook.com/book/swaroopch/byte-of-python/details](https://www.gitbook.com/book/swaroopch/byte-of-python/details) for the following types of downloads:
 
 - [PDF (for desktop reading, etc.)](https://www.gitbook.com/download/pdf/book/swaroopch/byte-of-python)
 - [EPUB (for iPhone/iPad, ebook readers, etc.)](https://www.gitbook.com/download/epub/book/swaroopch/byte-of-python)
 - [Mobi (for Kindle)](https://www.gitbook.com/download/mobi/book/swaroopch/byte-of-python)
 
-Visit {{ book.sourceUrl }} for the raw content (for suggesting corrections, changes, translating, etc.)
+Visit [https://github.com/swaroopch/byte-of-python](https://github.com/swaroopch/byte-of-python) for the raw content (for suggesting corrections, changes, translating, etc.)
 
 ## Read the book in your native language
 
