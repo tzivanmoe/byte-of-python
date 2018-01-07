@@ -1,4 +1,4 @@
-# Object Oriented Programming {#oop}
+# Object Oriented Programming
 
 In all the programs we wrote till now, we have designed our program around functions i.e. blocks of statements which manipulate data. This is called the _procedure-oriented_ way of programming. There is another way of organizing your program which is to combine data and functionality and wrap it inside something called an object. This is called the _object oriented_ programming paradigm. Most of the time you can use procedural programming, but when writing large programs or have a problem that is better suited to this method, you can use object oriented programming techniques.
 
@@ -18,7 +18,7 @@ Fields are of two types - they can belong to each instance/object of the class o
 
 A class is created using the `class` keyword. The fields and methods of the class are listed in an indented block.
 
-## The `self` {#self}
+## The `self`
 
 Class methods have only one specific difference from ordinary functions - they must have an extra first name that has to be added to the beginning of the parameter list, but you **do not** give a value for this parameter when you call the method, Python will provide it. This particular variable refers to the object _itself_, and by convention, it is given the name `self`.
 
@@ -32,7 +32,7 @@ You must be wondering how Python gives the value for `self` and why you don't ne
 
 This also means that if you have a method which takes no arguments, then you still have to have one argument - the `self`.
 
-## Classes {#class}
+## Classes
 
 The simplest class possible is shown in the following example (save as `oop_simplestclass.py`).
 
@@ -64,7 +64,7 @@ Output:
 
 Here we see the `self` in action. Notice that the `say_hi` method takes no parameters but still has the `self` in the function definition.
 
-## The `__init__` method {#init}
+## The `__init__` method
 
 There are many method names which have special significance in Python classes. We will see the significance of the `__init__` method now.
 
@@ -89,7 +89,7 @@ This is the special significance of this method.
 
 Now, we are able to use the `self.name` field in our methods which is demonstrated in the `say_hi` method.
 
-## Class And Object Variables {#class-obj-vars}
+## Class And Object Variables
 
 We have already discussed the functionality part of classes and objects (i.e. methods), now let us learn about the data part. The data part, i.e. fields, are nothing but ordinary variables that are _bound_ to the **namespaces** of the classes and objects. This means that these names are valid within the context of these classes and objects only. That's why they are called _name spaces_.
 

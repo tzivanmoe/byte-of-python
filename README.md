@@ -6,7 +6,7 @@
 
 This book will teach you to use Python version 3. There will also be guidance for you to adapt to the older and more common Python version 2 in the book.
 
-## Who reads A Byte of Python? {#who-reads-bop}
+## Who reads A Byte of Python?
 
 Here are what people are saying about the book:
 

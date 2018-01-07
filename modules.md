@@ -38,13 +38,13 @@ The `sys.path` contains the list of directory names where modules are imported f
 
 Note that the current directory is the directory from which the program is launched. Run `import os; print(os.getcwd())` to find out the current directory of your program.
 
-## Byte-compiled .pyc files {#pyc}
+## Byte-compiled .pyc files
 
 Importing a module is a relatively costly affair, so Python does some tricks to make it faster. One way is to create *byte-compiled* files with the extension `.pyc` which is an intermediate form that Python transforms the program into (remember the [introduction section](./about_python.md#interpreted) on how Python works?). This `.pyc` file is useful when you import the module the next time from a different program - it will be much faster since a portion of the processing required in importing a module is already done. Also, these byte-compiled files are platform-independent.
 
 NOTE: These `.pyc` files are usually created in the same directory as the corresponding `.py` files. If Python does not have permission to write to files in that directory, then the `.pyc` files will _not_ be created.
 
-## The from..import statement {#from-import-statement}
+## The from..import statement
 
 If you want to directly import the `argv` variable into your program (to avoid typing the `sys.` everytime for it), then you can use the `from sys import argv` statement.
 
@@ -57,7 +57,7 @@ from math import sqrt
 print("Square root of 16 is", sqrt(16))
 ```
 
-## A module's `__name__` {#module-name}
+## A module's `__name__`
 
 Every module has a name and statements in a module can find out the name of their module. This is handy for the particular purpose of figuring out whether the module is being run standalone or being imported. As mentioned previously, when a module is imported for the first time, the code it contains gets executed. We can use this to make the module behave in different ways depending on whether it is being used by itself or being imported from another module. This can be achieved using the `__name__` attribute of the module.
 
@@ -121,7 +121,7 @@ This will import all public names such as `say_hi` but would not import `__versi
 > 
 > One of Python's guiding principles is that "Explicit is better than Implicit". Run `import this` in Python to learn more.
 
-## The `dir` function {#dir-function}
+## The `dir` function
 
 Built-in `dir()` function returns list of names defined by an object.
 If the object is a module, this list includes functions, classes and variables, defined inside that module.

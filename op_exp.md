@@ -1,5 +1,4 @@
-# Operators and Expressions {#op-exp}
-
+# Operators and Expressions
 Most statements (logical lines) that you write will contain _expressions_. A simple example of an expression is `2 + 3`. An expression can be broken down into operators and operands.
 
 _Operators_ are functionality that do something and can be represented by symbols such as `+` or by special keywords. Operators require some data to operate on and such data is called _operands_. In this case, `2` and `3` are the operands.
@@ -161,7 +160,7 @@ The operators which we have not already come across will be explained in later c
 
 Operators with the _same precedence_ are listed in the same row in the above table. For example, `+` and `-` have the same precedence.
 
-## Changing the Order Of Evaluation {#changing-order-of-evaluation}
+## Changing the Order Of Evaluation
 
 To make the expressions more readable, we can use parentheses. For example, `2 + (3 * 4)` is definitely easier to understand than `2 + 3 * 4` which requires knowledge of the operator precedences. As with everything else, the parentheses should be used reasonably (do not overdo it) and should not be redundant, as in `(2 + (3 * 4))`.
 

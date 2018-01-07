@@ -1,4 +1,4 @@
-# Appendix: Colophon {#colophon}
+# Appendix: Colophon
 
 Almost all of the software that I have used in the creation of this book are [FLOSS](./floss.md#floss).
 

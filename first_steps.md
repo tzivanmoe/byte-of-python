@@ -56,7 +56,7 @@ In case you are willing to take the time to learn Vim or Emacs, then I highly re
 
 To reiterate, please choose a proper editor - it can make writing Python programs more fun and easy.
 
-## PyCharm {#pycharm}
+## PyCharm
 
 [PyCharm Educational Edition](https://www.jetbrains.com/pycharm-edu/) is a free editor which you can use for writing Python programs.
 

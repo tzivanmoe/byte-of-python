@@ -1,4 +1,4 @@
-# Appendix: History Lesson {#history-lesson}
+# Appendix: History Lesson
 
 I first started with Python when I needed to write an installer for software I had written called 'Diamond' so that I could make the installation easy. I had to choose between Python and Perl bindings for the Qt library. I did some research on the web and I came across [an article by Eric S. Raymond](http://www.python.org/about/success/esr/), a famous and respected hacker, where he talked about how Python had become his favorite programming language. I also found out that the PyQt bindings were more mature compared to Perl-Qt. So, I decided that Python was the language for me.
 
@@ -14,7 +14,7 @@ In the true spirit of open source, I have received lots of constructive suggesti
 
 The book needs the help of its readers such as yourselves to point out any parts of the book which are not good, not comprehensible or are simply wrong. Please [write to the main author]({{ book.contactUrl }}) or the respective [translators](./translations.md#translations) with your comments and suggestions.
 
-# Appendix: Revision History {#revision-history}
+# Appendix: Revision History
 
 - 4.0
     - 19 Jan 2016

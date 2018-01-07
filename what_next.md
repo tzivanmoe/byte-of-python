@@ -129,7 +129,7 @@ There are also others such as [CLPython](http://common-lisp.net/project/clpython
 
 Each of these implementations have their specialized areas where they are useful.
 
-## Functional Programming (for advanced readers) {#functional-programming}
+## Functional Programming (for advanced readers)
 
 When you start writing larger programs, you should definitely learn more about a functional approach to programming as opposed to the class-based approach to programming that we learned in the [object-oriented programming chapter](./oop.md#oop):
 

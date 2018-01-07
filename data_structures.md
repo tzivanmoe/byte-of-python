@@ -1,4 +1,4 @@
-# Data Structures {#data-structures}
+# Data Structures
 
 Data structures are basically just that - they are *structures* which can hold some *data* together. In other words, they are used to store a collection of related data.
 
@@ -213,7 +213,7 @@ Remember that if you want to make a copy of a list or such kinds of sequences or
 > 
 > Remember that an assignment statement for lists does **not** create a copy. You have to use slicing operation to make a copy of the sequence.
 
-## More About Strings {#more-strings}
+## More About Strings
 
 We have already discussed strings in detail earlier. What more can there be to know?  Well, did you know that strings are also objects and have methods which do everything from checking part of a string to stripping spaces?  In fact, you've already been using a string method... the `format` method!
 

@@ -1,4 +1,4 @@
-# Translation How-to {#translation-howto}
+# Translation How-to
 
 1. The full source of the book is available from [https://github.com/swaroopch/byte-of-python](https://github.com/swaroopch/byte-of-python).
 2. Please [fork the repository](https://help.github.com/articles/fork-a-repo).

@@ -1,4 +1,4 @@
-# Standard Library {#stdlib}
+# Standard Library
 
 The Python Standard Library contains a huge number of useful modules and is part of every standard Python installation. It is important to become familiar with the Python Standard Library since many problems can be solved quickly if you are familiar with the range of things that these libraries can do.
 
@@ -8,7 +8,7 @@ Let us explore a few useful modules.
 
 > CAUTION: If you find the topics in this chapter too advanced, you may skip this chapter. However, I highly recommend coming back to this chapter when you are more comfortable with programming using Python.
 
-## `sys` module {#sys}
+## `sys` module
 
 The `sys` module contains system-specific functionality. We have already seen that the `sys.argv` list contains the command-line arguments.
 
@@ -27,7 +27,7 @@ True
 
 The `sys` module has a `version_info` tuple that gives us the version information. The first entry is the major version. We can pull out this information to use it.
 
-## `logging` module {#logging}
+## `logging` module
 
 What if you wanted to have some debugging messages or important messages to be stored somewhere so that you can check whether your program has been running as you would expect it? How do you "store somewhere" these messages? This can be achieved using the `logging` module.
 
@@ -53,7 +53,7 @@ We configure the `logging` module to write all the messages in a particular form
 
 Finally, we can put messages that are either meant for debugging, information, warning or even critical messages. Once the program has run, we can check this file and we will know what happened in the program, even though no information was displayed to the user running the program.
 
-## Module of the Week Series {#motw}
+## Module of the Week Series
 
 There is much more to be explored in the standard library such as [debugging](http://docs.python.org/3/library/pdb.html),
 [handling command line options](http://docs.python.org/3/library/argparse.html), [regular expressions](http://docs.python.org/3/library/re.html) and so on.

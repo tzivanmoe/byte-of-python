@@ -1,4 +1,4 @@
-# Control Flow {#control-flow}
+# Control Flow
 
 In the programs we have seen till now, there has always been a series of statements faithfully executed by Python in exact top-down order. What if you wanted to change the flow of how it works? For example, you want the program to take some decisions and do different things depending on different situations, such as printing 'Good Morning' or 'Good Evening' depending on the time of the day?
 
@@ -106,7 +106,7 @@ Remember that the `for..in` loop works for any sequence. Here, we have a list of
 > 
 > In C/C++, if you want to write `for (int i = 0; i < 5; i++)`, then in Python you write just `for i in range(0,5)`. As you can see, the `for` loop is simpler, more expressive and less error prone in Python.
 
-## The break Statement {#break-statement}
+## The break Statement
 
 The `break` statement is used to *break* out of a loop statement i.e. stop the execution of a looping statement, even if the loop condition has not become `False` or the sequence of items has not been completely iterated over.
 
@@ -141,7 +141,7 @@ if you wanna make your work also fun:
     use Python!
 ```
 
-## The `continue` Statement {#continue-statement}
+## The `continue` Statement
 
 The `continue` statement is used to tell Python to skip the rest of the statements in the current loop block and to *continue* to the next iteration of the loop.
 

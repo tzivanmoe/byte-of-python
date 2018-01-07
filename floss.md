@@ -1,4 +1,4 @@
-# Appendix: FLOSS {#floss}
+# Appendix: FLOSS
 
 > NOTE: Please note that this section was written in 2003, so some of this will sound quaint to you :-)
 

@@ -65,7 +65,7 @@ All white space i.e. spaces and tabs, within the quotes, are preserved as-is.
 
 Strings in double quotes work exactly the same way as strings in single quotes. An example is `"What's your name?"`.
 
-### Triple Quotes {#triple-quotes}
+### Triple Quotes
 
 You can specify multi-line strings using triple quotes - (`"""` or `'''`). You can use single quotes and double quotes freely within the triple quotes. An example is:
 

@@ -76,7 +76,7 @@ Here, we are creating our own exception type. This new exception type is called 
 
 In the `except` clause, we mention the class of error which will be stored `as` the variable name to hold the corresponding error/exception object. This is analogous to parameters and arguments in a function call. Within this particular `except` clause, we use the `length` and `atleast` fields of the exception object to print an appropriate message to the user.
 
-## Try ... Finally {#try-finally}
+## Try ... Finally
 
 Suppose you are reading a file in your program. How do you ensure that the file object is closed properly whether or not an exception was raised? This can be done using the `finally` block.
 
@@ -98,7 +98,7 @@ Notice that a variable assigned a value of 0 or `None` or a variable which is an
 
 Also note that we use `sys.stdout.flush()` after `print` so that it prints to the screen immediately.
 
-## The with statement {#with}
+## The with statement
 
 Acquiring a resource in the `try` block and subsequently releasing the resource in the `finally` block is a common pattern. Hence, there is also a `with` statement that enables this to be done in a clean manner:
 

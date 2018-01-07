@@ -66,7 +66,7 @@ Next, we assign the value `2` to `x`. The name `x` is local to our function.  So
 
 With the last `print` statement, we display the value of `x` as defined in the main block, thereby confirming that it is actually unaffected by the local assignment within the previously called function.
 
-## The `global` statement {#global-statement}
+## The `global` statement
 
 If you want to assign a value to a name defined at the top level of the program (i.e. not inside any kind of scope such as functions or classes), then you have to tell Python that the name is not local, but it is *global*. We do this using the `global` statement. It is impossible to assign a value to a variable defined outside a function without the `global` statement.
 
@@ -86,7 +86,7 @@ The `global` statement is used to declare that `x` is a global variable - hence,
 
 You can specify more than one global variable using the same `global` statement e.g. `global x, y, z`.
 
-## Default Argument Values {#default-arguments}
+## Default Argument Values
 
 For some functions, you may want to make some parameters *optional* and use default values in case the user does not want to provide values for them. This is done with the help of default argument values. You can specify default argument values for parameters by appending to the parameter name in the function definition the assignment operator (`=`) followed by the default value.
 
@@ -157,7 +157,7 @@ Similarly, when we declare a double-starred parameter such as `**param`, then al
 
 We will explore tuples and dictionaries in a [later chapter](./data_structures.md#data-structures).
 
-## The `return` statement {#return-statement}
+## The `return` statement
 
 The `return` statement is used to *return* from a function i.e. break out of the function. We can optionally *return a value* from the function as well.
 
