@@ -75,11 +75,19 @@ A `lambda` statement is used to create new function objects. Essentially, the `l
 
 Example (save as `more_lambda.py`):
 
-<pre><code class="lang-python">{% include "./programs/more_lambda.py" %}</code></pre>
+```python
+points = [{'x': 2, 'y': 3},
+          {'x': 4, 'y': 1}]
+points.sort(key=lambda i: i['y'])
+print(points)
+```
 
 Output:
 
-<pre><code>{% include "./programs/more_lambda.txt" %}</code></pre>
+```
+$ python more_lambda.py
+[{'y': 1, 'x': 4}, {'y': 3, 'x': 2}]
+```
 
 **How It Works**
 
@@ -91,11 +99,18 @@ List comprehensions are used to derive a new list from an existing list. Suppose
 
 Example (save as `more_list_comprehension.py`):
 
-<pre><code class="lang-python">{% include "./programs/more_list_comprehension.py" %}</code></pre>
+```python
+listone = [2, 3, 4]
+listtwo = [2*i for i in listone if i > 2]
+print(listtwo)
+```
 
 Output:
 
-<pre><code>{% include "./programs/more_list_comprehension.txt" %}</code></pre>
+```
+$ python more_list_comprehension.py
+[6, 8]
+```
 
 **How It Works**
 
@@ -145,11 +160,68 @@ The `assert` statement should be used judiciously. Most of the time, it is bette
 
 Decorators are a shortcut to applying wrapper functions. This is helpful to "wrap" functionality with the same code over and over again. For example, I created a `retry` decorator for myself that I can just apply to any function and if any exception is thrown during a run, it is retried again, till a maximum of 5 times and with a delay between each retry. This is especially useful for situations where you are trying to make a network call to a remote computer:
 
-<pre><code class="lang-python">{% include "./programs/more_decorator.py" %}</code></pre>
+```python
+from time import sleep
+from functools import wraps
+import logging
+logging.basicConfig()
+log = logging.getLogger("retry")
+
+
+def retry(f):
+    @wraps(f)
+    def wrapper_function(*args, **kwargs):
+        MAX_ATTEMPTS = 5
+        for attempt in range(1, MAX_ATTEMPTS + 1):
+            try:
+                return f(*args, **kwargs)
+            except:
+                log.exception("Attempt %s/%s failed : %s",
+                              attempt,
+                              MAX_ATTEMPTS,
+                              (args, kwargs))
+                sleep(10 * attempt)
+        log.critical("All %s attempts failed : %s",
+                     MAX_ATTEMPTS,
+                     (args, kwargs))
+    return wrapper_function
+
+
+counter = 0
+
+
+@retry
+def save_to_database(arg):
+    print("Write to a database or make a network call or etc.")
+    print("This will be automatically retried if exception is thrown.")
+    global counter
+    counter += 1
+    # This will throw an exception in the first call
+    # And will work fine in the second call (i.e. a retry)
+    if counter < 2:
+        raise ValueError(arg)
+
+
+if __name__ == '__main__':
+    save_to_database("Some bad value")
+```
 
 Output:
 
-<pre><code>{% include "./programs/more_decorator.txt" %}</code></pre>
+```
+$ python more_decorator.py
+Write to a database or make a network call or etc.
+This will be automatically retried if exception is thrown.
+ERROR:retry:Attempt 1/5 failed : (('Some bad value',), {})
+Traceback (most recent call last):
+  File "more_decorator.py", line 14, in wrapper_function
+    return f(*args, **kwargs)
+  File "more_decorator.py", line 39, in save_to_database
+    raise ValueError(arg)
+ValueError: Some bad value
+Write to a database or make a network call or etc.
+This will be automatically retried if exception is thrown.
+```
 
 **How It Works**
 

@@ -8,11 +8,23 @@ Functions are defined using the `def` keyword. After this keyword comes an *iden
 
 Example (save as `function1.py`):
 
-<pre><code class="lang-python">{% include "./programs/function1.py" %}</code></pre>
+```python
+def say_hello():
+    # block belonging to the function
+    print('hello world')
+# End of function
+
+say_hello()  # call the function
+say_hello()  # call the function again
+```
 
 Output:
 
-<pre><code>{% include "./programs/function1.txt" %}</code></pre>
+```
+$ python function1.py
+hello world
+hello world
+```
 
 **How It Works**
 
@@ -34,11 +46,32 @@ supply in the function call are called *arguments*.
 
 Example (save as `function_param.py`):
 
-<pre><code class="lang-python">{% include "./programs/function_param.py" %}</code></pre>
+```python
+def print_max(a, b):
+    if a > b:
+        print(a, 'is maximum')
+    elif a == b:
+        print(a, 'is equal to', b)
+    else:
+        print(b, 'is maximum')
+
+# directly pass literal values
+print_max(3, 4)
+
+x = 5
+y = 7
+
+# pass variables as arguments
+print_max(x, y)
+```
 
 Output:
 
-<pre><code>{% include "./programs/function_param.txt" %}</code></pre>
+```
+$ python function_param.py
+4 is maximum
+7 is maximum
+```
 
 **How It Works**
 
@@ -52,11 +85,28 @@ When you declare variables inside a function definition, they are not related in
 
 Example (save as `function_local.py`):
 
-<pre><code class="lang-python">{% include "./programs/function_local.py" %}</code></pre>
+```python
+x = 50
+
+
+def func(x):
+    print('x is', x)
+    x = 2
+    print('Changed local x to', x)
+
+
+func(x)
+print('x is still', x)
+```
 
 Output:
 
-<pre><code>{% include "./programs/function_local.txt" %}</code></pre>
+```
+$ python function_local.py
+x is 50
+Changed local x to 2
+x is still 50
+```
 
 **How It Works**
 
@@ -74,11 +124,30 @@ You can use the values of such variables defined outside the function (assuming 
 
 Example (save as `function_global.py`):
 
-<pre><code class="lang-python">{% include "./programs/function_global.py" %}</code></pre>
+```python
+x = 50
+
+
+def func():
+    global x
+
+    print('x is', x)
+    x = 2
+    print('Changed global x to', x)
+
+
+func()
+print('Value of x is', x)
+```
 
 Output:
 
-<pre><code>{% include "./programs/function_global.txt" %}</code></pre>
+```
+$ python function_global.py
+x is 50
+Changed global x to 2
+Value of x is 2
+```
 
 **How It Works**
 
@@ -94,11 +163,21 @@ Note that the default argument value should be a constant. More precisely, the d
 
 Example (save as `function_default.py`):
 
-<pre><code class="lang-python">{% include "./programs/function_default.py" %}</code></pre>
+```python
+def say(message, times=1):
+    print(message * times)
+
+say('Hello')
+say('World', 5)
+```
 
 Output:
 
-<pre><code>{% include "./programs/function_default.txt" %}</code></pre>
+```
+$ python function_default.py
+Hello
+WorldWorldWorldWorldWorld
+```
 
 **How It Works**
 
@@ -123,11 +202,23 @@ There are two advantages - one, using the function is easier since we do not nee
 
 Example (save as `function_keyword.py`):
 
-<pre><code class="lang-python">{% include "./programs/function_keyword.py" %}</code></pre>
+```python
+def func(a, b=5, c=10):
+    print('a is', a, 'and b is', b, 'and c is', c)
+
+func(3, 7)
+func(25, c=24)
+func(c=50, a=100)
+```
 
 Output:
 
-<pre><code>{% include "./programs/function_keyword.txt" %}</code></pre>
+```
+$ python function_keyword.py
+a is 3 and b is 7 and c is 10
+a is 25 and b is 5 and c is 24
+a is 100 and b is 5 and c is 50
+```
 
 **How It Works**
 
@@ -143,11 +234,34 @@ In the third usage `func(c=50, a=100)`, we use keyword arguments for all specifi
 
 Sometimes you might want to define a function that can take _any_ number of parameters, i.e. **var**iable number of **arg**uments, this can be achieved by using the stars (save as `function_varargs.py`):
 
-<pre><code class="lang-python">{% include "./programs/function_varargs.py" %}</code></pre>
+```python
+def total(a=5, *numbers, **phonebook):
+    print('a', a)
+
+    #iterate through all the items in tuple
+    for single_item in numbers:
+        print('single_item', single_item)
+
+    #iterate through all the items in dictionary    
+    for first_part, second_part in phonebook.items():
+        print(first_part,second_part)
+
+print(total(10,1,2,3,Jack=1123,John=2231,Inge=1560))
+```
 
 Output:
 
-<pre><code>{% include "./programs/function_varargs.txt" %}</code></pre>
+```
+$ python function_varargs.py
+a 10
+single_item 1
+single_item 2
+single_item 3
+Inge 1560
+John 2231
+Jack 1123
+None
+```
 
 **How It Works**
 
@@ -163,11 +277,24 @@ The `return` statement is used to *return* from a function i.e. break out of the
 
 Example (save as `function_return.py`):
 
-<pre><code class="lang-python">{% include "./programs/function_return.py" %}</code></pre>
+```python
+def maximum(x, y):
+    if x > y:
+        return x
+    elif x == y:
+        return 'The numbers are equal'
+    else:
+        return y
+
+print(maximum(2, 3))
+```
 
 Output:
 
-<pre><code>{% include "./programs/function_return.txt" %}</code></pre>
+```
+$ python function_return.py
+3
+```
 
 **How It Works**
 
@@ -192,11 +319,33 @@ Python has a nifty feature called *documentation strings*, usually referred to b
 
 Example (save as `function_docstring.py`):
 
-<pre><code class="lang-python">{% include "./programs/function_docstring.py" %}</code></pre>
+```python
+def print_max(x, y):
+    '''Prints the maximum of two numbers.
+
+    The two values must be integers.'''
+    # convert to integers, if possible
+    x = int(x)
+    y = int(y)
+
+    if x > y:
+        print(x, 'is maximum')
+    else:
+        print(y, 'is maximum')
+
+print_max(3, 5)
+print(print_max.__doc__)
+```
 
 Output:
 
-<pre><code>{% include "./programs/function_docstring.txt" %}</code></pre>
+```
+$ python function_docstring.py
+5 is maximum
+Prints the maximum of two numbers.
+
+    The two values must be integers.
+```
 
 **How It Works**
 

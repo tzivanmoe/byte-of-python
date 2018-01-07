@@ -10,11 +10,37 @@ Another common type of input/output is dealing with files. The ability to create
 
 Save this program as `io_input.py`:
 
-<pre><code class="lang-python">{% include "./programs/io_input.py" %}</code></pre>
+```python
+def reverse(text):
+    return text[::-1]
+
+
+def is_palindrome(text):
+    return text == reverse(text)
+
+
+something = input("Enter text: ")
+if is_palindrome(something):
+    print("Yes, it is a palindrome")
+else:
+    print("No, it is not a palindrome")
+```
 
 Output:
 
-<pre><code>{% include "./programs/io_input.txt" %}</code></pre>
+```
+$ python3 io_input.py
+Enter text: sir
+No, it is not a palindrome
+
+$ python3 io_input.py
+Enter text: madam
+Yes, it is a palindrome
+
+$ python3 io_input.py
+Enter text: racecar
+Yes, it is a palindrome
+```
 
 **How It Works**
 
@@ -36,11 +62,46 @@ You can open and use files for reading or writing by creating an object of the `
 
 Example (save as `io_using_file.py`):
 
-<pre><code class="lang-python">{% include "./programs/io_using_file.py" %}</code></pre>
+```python
+poem = '''\
+Programming is fun
+When the work is done
+if you wanna make your work also fun:
+    use Python!
+'''
+
+# Open for 'w'riting
+f = open('poem.txt', 'w')
+# Write text to file
+f.write(poem)
+# Close the file
+f.close()
+
+# If no mode is specified,
+# 'r'ead mode is assumed by default
+f = open('poem.txt')
+while True:
+    line = f.readline()
+    # Zero length indicates EOF
+    if len(line) == 0:
+        break
+    # The `line` already has a newline
+    # at the end of each line
+    # since it is reading from a file.
+    print(line, end='')
+# close the file
+f.close()
+```
 
 Output:
 
-<pre><code>{% include "./programs/io_using_file.txt" %}</code></pre>
+```
+$ python3 io_using_file.py
+Programming is fun
+When the work is done
+if you wanna make your work also fun:
+    use Python!
+```
 
 **How It Works**
 
@@ -60,11 +121,36 @@ Python provides a standard module called `pickle` which you can use to store _an
 
 Example (save as `io_pickle.py`):
 
-<pre><code class="lang-python">{% include "./programs/io_pickle.py" %}</code></pre>
+```python
+import pickle
+
+# The name of the file where we will store the object
+shoplistfile = 'shoplist.data'
+# The list of things to buy
+shoplist = ['apple', 'mango', 'carrot']
+
+# Write to the file
+f = open(shoplistfile, 'wb')
+# Dump the object to a file
+pickle.dump(shoplist, f)
+f.close()
+
+# Destroy the shoplist variable
+del shoplist
+
+# Read back from the storage
+f = open(shoplistfile, 'rb')
+# Load the object from the file
+storedlist = pickle.load(f)
+print(storedlist)
+```
 
 Output:
 
-<pre><code>{% include "./programs/io_pickle.txt" %}</code></pre>
+```
+$ python io_pickle.py
+['apple', 'mango', 'carrot']
+```
 
 **How It Works**
 
@@ -91,7 +177,17 @@ So far, when we have been writing and using strings, or reading and writing to a
 
 When data is sent over the Internet, we need to send it in bytes... something your computer easily understands.  The rules for translating Unicode (which is what Python uses when it stores a string) to bytes is called encoding.  A popular encoding to use is UTF-8.  We can read and write in UTF-8 by using a simple keyword argument in our `open function`.
 
-<pre><code class="lang-python">{% include "./programs/io_unicode.py" %}</code></pre>
+```python
+# encoding=utf-8
+import io
+
+f = io.open("abc.txt", "wt", encoding="utf-8")
+f.write(u"Imagine non-English language here")
+f.close()
+
+text = io.open("abc.txt", encoding="utf-8").read()
+print(text)
+```
 
 **How It Works**
 

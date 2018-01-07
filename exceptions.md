@@ -38,11 +38,32 @@ We can handle exceptions using the `try..except` statement.  We basically put ou
 
 Example (save as `exceptions_handle.py`):
 
-<pre><code class="lang-python">{% include "./programs/exceptions_handle.py" %}</code></pre>
+```python
+try:
+    text = input('Enter something --> ')
+except EOFError:
+    print('Why did you do an EOF on me?')
+except KeyboardInterrupt:
+    print('You cancelled the operation.')
+else:
+    print('You entered {}'.format(text))
+```
 
 Output:
 
-<pre><code>{% include "./programs/exceptions_handle.txt" %}</code></pre>
+```
+# Press ctrl + d
+$ python exceptions_handle.py
+Enter something --> Why did you do an EOF on me?
+
+# Press ctrl + c
+$ python exceptions_handle.py
+Enter something --> ^CYou cancelled the operation.
+
+$ python exceptions_handle.py
+Enter something --> No exceptions
+You entered No exceptions
+```
 
 **How It Works**
 
@@ -64,11 +85,40 @@ The error or exception that you can raise should be a class which directly or in
 
 Example (save as `exceptions_raise.py`):
 
-<pre><code class="lang-python">{% include "./programs/exceptions_raise.py" %}</code></pre>
+```python
+class ShortInputException(Exception):
+    '''A user-defined exception class.'''
+    def __init__(self, length, atleast):
+        Exception.__init__(self)
+        self.length = length
+        self.atleast = atleast
+
+try:
+    text = input('Enter something --> ')
+    if len(text) < 3:
+        raise ShortInputException(len(text), 3)
+    # Other work can continue as usual here
+except EOFError:
+    print('Why did you do an EOF on me?')
+except ShortInputException as ex:
+    print(('ShortInputException: The input was ' +
+           '{0} long, expected at least {1}')
+          .format(ex.length, ex.atleast))
+else:
+    print('No exception was raised.')
+```
 
 Output:
 
-<pre><code>{% include "./programs/exceptions_raise.txt" %}</code></pre>
+```
+$ python exceptions_raise.py
+Enter something --> a
+ShortInputException: The input was 1 long, expected at least 3
+
+$ python exceptions_raise.py
+Enter something --> abc
+No exception was raised.
+```
 
 **How It Works**
 
@@ -82,11 +132,42 @@ Suppose you are reading a file in your program. How do you ensure that the file 
 
 Save this program as `exceptions_finally.py`:
 
-<pre><code class="lang-python">{% include "./programs/exceptions_finally.py" %}</code></pre>
+```python
+import sys
+import time
+
+f = None
+try:
+    f = open("poem.txt")
+    # Our usual file-reading idiom
+    while True:
+        line = f.readline()
+        if len(line) == 0:
+            break
+        print(line, end='')
+        sys.stdout.flush()
+        print("Press ctrl+c now")
+        # To make sure it runs for a while
+        time.sleep(2)
+except IOError:
+    print("Could not find file poem.txt")
+except KeyboardInterrupt:
+    print("!! You cancelled the reading from the file.")
+finally:
+    if f:
+        f.close()
+    print("(Cleaning up: Closed the file)")
+```
 
 Output:
 
-<pre><code>{% include "./programs/exceptions_finally.txt" %}</code></pre>
+```
+$ python exceptions_finally.py
+Programming is fun
+Press ctrl+c now
+^C!! You cancelled the reading from the file.
+(Cleaning up: Closed the file)
+```
 
 **How It Works**
 
@@ -104,7 +185,11 @@ Acquiring a resource in the `try` block and subsequently releasing the resource 
 
 Save as `exceptions_using_with.py`:
 
-<pre><code class="lang-python">{% include "./programs/exceptions_using_with.py" %}</code></pre>
+```python
+with open("poem.txt") as f:
+    for line in f:
+        print(line, end='')
+```
 
 **How It Works**
 

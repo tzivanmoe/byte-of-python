@@ -28,11 +28,64 @@ As the design of our program is now reasonably stable, we can write the code whi
 
 Save as `backup_ver1.py`:
 
-<pre><code class="lang-python">{% include "./programs/backup_ver1.py" %}</code></pre>
+```python
+import os
+import time
+
+# 1. The files and directories to be backed up are
+# specified in a list.
+# Example on Windows:
+# source = ['"C:\\My Documents"']
+# Example on Mac OS X and Linux:
+source = ['/Users/swa/notes']
+# Notice we have to use double quotes inside a string
+# for names with spaces in it.  We could have also used
+# a raw string by writing [r'C:\My Documents'].
+
+# 2. The backup must be stored in a
+# main backup directory
+# Example on Windows:
+# target_dir = 'E:\\Backup'
+# Example on Mac OS X and Linux:
+target_dir = '/Users/swa/backup'
+# Remember to change this to which folder you will be using
+
+# 3. The files are backed up into a zip file.
+# 4. The name of the zip archive is the current date and time
+target = target_dir + os.sep + \
+         time.strftime('%Y%m%d%H%M%S') + '.zip'
+
+# Create target directory if it is not present
+if not os.path.exists(target_dir):
+    os.mkdir(target_dir)  # make directory
+
+# 5. We use the zip command to put the files in a zip archive
+zip_command = 'zip -r {0} {1}'.format(target,
+                                      ' '.join(source))
+
+# Run the backup
+print('Zip command is:')
+print(zip_command)
+print('Running:')
+if os.system(zip_command) == 0:
+    print('Successful backup to', target)
+else:
+    print('Backup FAILED')
+```
 
 Output:
 
-<pre><code>{% include "./programs/backup_ver1.txt" %}</code></pre>
+```
+$ python backup_ver1.py
+Zip command is:
+zip -r /Users/swa/backup/20140328084844.zip /Users/swa/notes
+Running:
+  adding: Users/swa/notes/ (stored 0%)
+  adding: Users/swa/notes/blah1.txt (stored 0%)
+  adding: Users/swa/notes/blah2.txt (stored 0%)
+  adding: Users/swa/notes/blah3.txt (stored 0%)
+Successful backup to /Users/swa/backup/20140328084844.zip
+```
 
 Now, we are in the *testing* phase where we test that our program works properly. If it doesn't behave as expected, then we have to *debug* our program i.e. remove the *bugs* (errors) from the program.
 
@@ -74,11 +127,74 @@ One of the refinements I felt was useful is a better file-naming mechanism - usi
 
 Save as `backup_ver2.py`:
 
-<pre><code class="lang-python">{% include "./programs/backup_ver2.py" %}</code></pre>
+```python
+import os
+import time
+
+# 1. The files and directories to be backed up are
+# specified in a list.
+# Example on Windows:
+# source = ['"C:\\My Documents"', 'C:\\Code']
+# Example on Mac OS X and Linux:
+source = ['/Users/swa/notes']
+# Notice we had to use double quotes inside the string
+# for names with spaces in it.
+
+# 2. The backup must be stored in a
+# main backup directory
+# Example on Windows:
+# target_dir = 'E:\\Backup'
+# Example on Mac OS X and Linux:
+target_dir = '/Users/swa/backup'
+# Remember to change this to which folder you will be using
+
+# Create target directory if it is not present
+if not os.path.exists(target_dir):
+    os.mkdir(target_dir)  # make directory
+
+# 3. The files are backed up into a zip file.
+# 4. The current day is the name of the subdirectory
+# in the main directory.
+today = target_dir + os.sep + time.strftime('%Y%m%d')
+# The current time is the name of the zip archive.
+now = time.strftime('%H%M%S')
+
+# The name of the zip file
+target = today + os.sep + now + '.zip'
+
+# Create the subdirectory if it isn't already there
+if not os.path.exists(today):
+    os.mkdir(today)
+    print('Successfully created directory', today)
+
+# 5. We use the zip command to put the files in a zip archive
+zip_command = 'zip -r {0} {1}'.format(target,
+                                      ' '.join(source))
+
+# Run the backup
+print('Zip command is:')
+print(zip_command)
+print('Running:')
+if os.system(zip_command) == 0:
+    print('Successful backup to', target)
+else:
+    print('Backup FAILED')
+```
 
 Output:
 
-<pre><code>{% include "./programs/backup_ver2.txt" %}</code></pre>
+```
+$ python backup_ver2.py
+Successfully created directory /Users/swa/backup/20140329
+Zip command is:
+zip -r /Users/swa/backup/20140329/073201.zip /Users/swa/notes
+Running:
+  adding: Users/swa/notes/ (stored 0%)
+  adding: Users/swa/notes/blah1.txt (stored 0%)
+  adding: Users/swa/notes/blah2.txt (stored 0%)
+  adding: Users/swa/notes/blah3.txt (stored 0%)
+Successful backup to /Users/swa/backup/20140329/073201.zip
+```
 
 **How It Works**
 
@@ -92,11 +208,76 @@ WARNING: The following program does not work, so do not be alarmed, please follo
 
 Save as `backup_ver3.py`:
 
-<pre><code class="lang-python">{% include "./programs/backup_ver3.py" %}</code></pre>
+```python
+import os
+import time
+
+# 1. The files and directories to be backed up are
+# specified in a list.
+# Example on Windows:
+# source = ['"C:\\My Documents"', 'C:\\Code']
+# Example on Mac OS X and Linux:
+source = ['/Users/swa/notes']
+# Notice we had to use double quotes inside the string
+# for names with spaces in it.
+
+# 2. The backup must be stored in a
+# main backup directory
+# Example on Windows:
+# target_dir = 'E:\\Backup'
+# Example on Mac OS X and Linux:
+target_dir = '/Users/swa/backup'
+# Remember to change this to which folder you will be using
+
+# Create target directory if it is not present
+if not os.path.exists(target_dir):
+    os.mkdir(target_dir)  # make directory
+
+# 3. The files are backed up into a zip file.
+# 4. The current day is the name of the subdirectory
+# in the main directory.
+today = target_dir + os.sep + time.strftime('%Y%m%d')
+# The current time is the name of the zip archive.
+now = time.strftime('%H%M%S')
+
+# Take a comment from the user to
+# create the name of the zip file
+comment = input('Enter a comment --> ')
+# Check if a comment was entered
+if len(comment) == 0:
+    target = today + os.sep + now + '.zip'
+else:
+    target = today + os.sep + now + '_' + 
+        comment.replace(' ', '_') + '.zip'
+
+# Create the subdirectory if it isn't already there
+if not os.path.exists(today):
+    os.mkdir(today)
+    print('Successfully created directory', today)
+
+# 5. We use the zip command to put the files in a zip archive
+zip_command = "zip -r {0} {1}".format(target,
+                                      ' '.join(source))
+
+# Run the backup
+print('Zip command is:')
+print(zip_command)
+print('Running:')
+if os.system(zip_command) == 0:
+    print('Successful backup to', target)
+else:
+    print('Backup FAILED')
+```
 
 Output:
 
-<pre><code>{% include "./programs/backup_ver3.txt" %}</code></pre>
+```
+$ python backup_ver3.py
+  File "backup_ver3.py", line 39
+    target = today + os.sep + now + '_' +
+                                        ^
+SyntaxError: invalid syntax
+```
 
 **How This (does not) Work**
 
@@ -108,11 +289,81 @@ On careful observation, we see that the single logical line has been split into 
 
 Save as `backup_ver4.py`:
 
-<pre><code class="lang-python">{% include "./programs/backup_ver4.py" %}</code></pre>
+```python
+import os
+import time
+
+# 1. The files and directories to be backed up are
+# specified in a list.
+# Example on Windows:
+# source = ['"C:\\My Documents"', 'C:\\Code']
+# Example on Mac OS X and Linux:
+source = ['/Users/swa/notes']
+# Notice we had to use double quotes inside the string
+# for names with spaces in it.
+
+# 2. The backup must be stored in a
+# main backup directory
+# Example on Windows:
+# target_dir = 'E:\\Backup'
+# Example on Mac OS X and Linux:
+target_dir = '/Users/swa/backup'
+# Remember to change this to which folder you will be using
+
+# Create target directory if it is not present
+if not os.path.exists(target_dir):
+    os.mkdir(target_dir)  # make directory
+
+# 3. The files are backed up into a zip file.
+# 4. The current day is the name of the subdirectory
+# in the main directory.
+today = target_dir + os.sep + time.strftime('%Y%m%d')
+# The current time is the name of the zip archive.
+now = time.strftime('%H%M%S')
+
+# Take a comment from the user to
+# create the name of the zip file
+comment = input('Enter a comment --> ')
+# Check if a comment was entered
+if len(comment) == 0:
+    target = today + os.sep + now + '.zip'
+else:
+    target = today + os.sep + now + '_' + \
+        comment.replace(' ', '_') + '.zip'
+
+# Create the subdirectory if it isn't already there
+if not os.path.exists(today):
+    os.mkdir(today)
+    print('Successfully created directory', today)
+
+# 5. We use the zip command to put the files in a zip archive
+zip_command = 'zip -r {0} {1}'.format(target,
+                                      ' '.join(source))
+
+# Run the backup
+print('Zip command is:')
+print(zip_command)
+print('Running:')
+if os.system(zip_command) == 0:
+    print('Successful backup to', target)
+else:
+    print('Backup FAILED')
+```
 
 Output:
 
-<pre><code>{% include "./programs/backup_ver4.txt" %}</code></pre>
+```
+$ python backup_ver4.py
+Enter a comment --> added new examples
+Zip command is:
+zip -r /Users/swa/backup/20140329/074122_added_new_examples.zip /Users/swa/notes
+Running:
+  adding: Users/swa/notes/ (stored 0%)
+  adding: Users/swa/notes/blah1.txt (stored 0%)
+  adding: Users/swa/notes/blah2.txt (stored 0%)
+  adding: Users/swa/notes/blah3.txt (stored 0%)
+Successful backup to /Users/swa/backup/20140329/074122_added_new_examples.zip
+```
 
 **How It Works**
 
