@@ -1,5 +1,7 @@
 # A Byte of Python
 
+> 本开源书 forked from [A Byte of Python](https://github.com/swaroopch/byte-of-python)，作者为 [swaroopch](https://github.com/swaroopch)，欢迎大家 star 原作者的 [repo](https://github.com/swaroopch/byte-of-python)，以便获得最新更新，谢谢！
+
 "A Byte of Python" is a free book on programming using the Python language. It serves as a tutorial or guide to the Python language for a beginner audience. If all you know about computers is how to save text files, then this is the book for you.
 
 ## For Python version 3
